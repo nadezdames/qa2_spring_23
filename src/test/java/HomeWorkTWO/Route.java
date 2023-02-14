@@ -1,4 +1,4 @@
-package HomeWorkTWOLessonFIVE;
+package HomeWorkTWO;
 
 //---------ATTRIBUTES---------
 public class Route {
