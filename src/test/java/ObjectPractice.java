@@ -13,7 +13,7 @@ public class ObjectPractice {
         secondOrder.setAddress("Lubanas str. 16");
         secondOrder.setItemCount(2);
 
-        System.out.println("Hello, world!");
+//        System.out.println("Hello, world!");
         System.out.println("1st Order");
         System.out.println(firstOrder.getTotalPrice());
 
