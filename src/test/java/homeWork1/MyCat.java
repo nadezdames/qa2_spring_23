@@ -1,4 +1,4 @@
-package HomeWorkONE;
+package homeWork1;
 
 public class MyCat {
     private String catName = "BiMO";
@@ -8,3 +8,6 @@ public class MyCat {
     private long daysTogether = 2920L;
     private double yearsWePlaningLiveTogether = 999.999999999999999999999999999999999;
 }
+
+
+// https://skillbox.ru/media/base/tipy-dannykh-v-java/
