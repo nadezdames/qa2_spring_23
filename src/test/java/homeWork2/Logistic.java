@@ -1,4 +1,4 @@
-package HomeWorkTWO;
+package homeWork2;
 
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +9,12 @@ import org.junit.jupiter.api.Test;
 // Задача: ответить на вопрос, сможет ли ТРАНСПОРТ проехать РАССТОЯНИЕ на ОДНОМ ПОЛНОМ ТОПЛИВНОМ БАКЕ
 
 public class Logistic {
+
+    private String translateBoolean(boolean trueOrFalse) {
+        String answer = trueOrFalse ? "Yes" : "No";
+        return answer;
+    }
+
     @Test
     public void myTransport() {
         Transport firstTransport = new Transport();
@@ -62,7 +68,7 @@ public class Logistic {
         boolean threePointThreeAnswer = thirdTransport.getDistance() >= thirdRoute.getDistance();
 
         System.out.println("1.1 Can " + firstTransport.getTransportColor() + " " + firstTransport.getTransportType() + " make a distance from " + firstRoute.getStartingPoint() + " to " + firstRoute.getFinalDestination() + " on ONE fuel tank? ");
-        System.out.println("Answer: " + onePointOneAnswer);
+        System.out.println("Answer: " + translateBoolean(onePointOneAnswer));
         System.out.println(" ");
 
         System.out.println("1.2 Can " + firstTransport.getTransportColor() + " " + firstTransport.getTransportType() + " make a distance from " + secondRoute.getStartingPoint() + " to " + secondRoute.getFinalDestination() + " on ONE fuel tank? ");
@@ -98,5 +104,6 @@ public class Logistic {
 
 
     }
+
 
 }

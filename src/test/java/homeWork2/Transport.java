@@ -1,4 +1,4 @@
-package HomeWorkTWO;
+package homeWork2;
 
 //---------ATTRIBUTES---------
 public class Transport {
