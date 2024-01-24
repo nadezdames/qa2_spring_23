@@ -20,15 +20,15 @@ public class BaseFunc {
 
     public BaseFunc() {
         // Расхлопываю окно
-        browser = new ChromeDriver(); // Переменная, которая создается внутри метода ( внутри {} ) принадлежит ТОЛЬКО этому методу и весь класс о ней не знает
+        browser = new ChromeDriver();                 // Переменная, которая создается внутри метода ( внутри {} ) принадлежит ТОЛЬКО этому методу и весь класс о ней не знает
         browser.manage().window().maximize();
 
         // Генерирую ожидание
         wait = new WebDriverWait(browser, Duration.ofSeconds(4));
     }
 
-    public void openURL(String url) {   // openURL - это метод/функция это блок кода который выполняет определенную задачу. У него есть область видимости (public/private),
-        // возвращаемый тип (void) и входящие параметры (String firstParam, int secondParam, boolean thirdParam)
+    public void openURL(String url) {                   // openURL - это метод/функция это блок кода который выполняет определенную задачу. У него есть область видимости (public/private),
+                                                        // возвращаемый тип (void) и входящие параметры (String firstParam, int secondParam, boolean thirdParam)
 
 //        //if TRUE
 //        if (url.startsWith("http://") || url.startsWith("https://")) {      // logical operators: AND (&&) and OR (||)
