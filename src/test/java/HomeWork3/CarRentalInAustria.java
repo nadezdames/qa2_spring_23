@@ -1,4 +1,4 @@
-package HomeWorkTHREE;
+package HomeWork3;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;

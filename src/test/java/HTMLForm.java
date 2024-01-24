@@ -4,15 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
-public class BasicHTMLFormExample {
+public class HTMLForm {
     private final By USERNAME_FIELD = By.xpath(".//input[@name='username']");
     private final String NAME_INPUT = "TestTostTast";
     private final By SUBMITTED_USER_NAME = By.id("_valueusername");
@@ -31,13 +29,13 @@ public class BasicHTMLFormExample {
 //    private final String DEPARTURE_AIRPORT = "Tallina (TLL)";
 
     @Test
-    public void reservationCheck() {
+    public void successCheck() {
         // Open browser
-        WebDriver browser = new ChromeDriver();
-        browser.manage().window().maximize();
+        WebDriver browser = new ChromeDriver();     // WebDriver является частью библиотеки Selenium и отвечает за БРАУЗЕРНОЕ ОКНО. new ChromeDriver (new FirefoxDriver) - это новое браузерное окно
+        browser.manage().window().maximize();       // расхлопнуть браузерное окно
 
         //Open webpage
-        browser.get(URL);
+        browser.get(URL);                           // метод get() вводит в нашу браузерную строку конкретный адрес и нажимает Enter
 
 //        // Accept Cookies btn
 //        WebDriverWait wait = new WebDriverWait(browser, Duration.ofSeconds(4));
@@ -73,7 +71,7 @@ public class BasicHTMLFormExample {
         WebElement passwordCheck = browser.findElement(SUBMITTED_PASSWORD);
         String passwordCheckText = passwordCheck.getText();
 
-        WebDriverWait wait = new WebDriverWait(browser, Duration.ofSeconds(4));
+        WebDriverWait wait = new WebDriverWait(browser, Duration.ofSeconds(4));             // сконфигурировали ожидание
         wait.until(ExpectedConditions.numberOfElementsToBe(SUBMITTED_USER_NAME,1));
         wait.until(ExpectedConditions.numberOfElementsToBe(SUBMITTED_PASSWORD,1));
 

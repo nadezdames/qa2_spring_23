@@ -26,12 +26,5 @@ public class FirstSeleniumTest {
 
         browser.findElement(ACCEPT_COOKIES_BTN).click(); //открыть браузер > найти кнопку ACCEPT_COOKIES > нажать на нее
 
-//        By.id("element-id");
-//        By.name("input-field-name");
-//        By.xpath(".//label[@for = 'is-drop-off']");
-
-//        List<WebElement> elements = browser.findElements();
-//        elements.get(1).click
-
     }
 }
