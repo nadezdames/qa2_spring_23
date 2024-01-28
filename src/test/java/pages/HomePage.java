@@ -8,9 +8,9 @@ public class HomePage {
     private final By USERNAME_FIELD = By.xpath(".//input[@name='username']");
     private final By PASSWORD_FIELD = By.xpath(".//input[@name='password']");
     private final By TEXT_AREA_FIELD = By.xpath(".//textarea[@name='comments']");
-//    private final String NAME_INPUT = "TestTostTast";
-//    private final String PASSWORD_INPUT = "Password1234";
-//    private final int COMMENTS_INPUT = 123123123;
+    private final By FILENAME_FIELD = By.xpath(".//input[@type='file']");
+    private final By CHECKBOX_ITEMS_FIELD = By.xpath(".//input[@type='checkbox']");
+    private final By RADIO_ITEMS_FIELD = By.xpath(".//input[@type='radio']");
     private final By DROPDOWN_FIELD = By.xpath(".//select[@name='dropdown']");
     private final By SUBMIT_BTN = By.xpath(".//input[@value='submit']");
 
@@ -18,12 +18,6 @@ public class HomePage {
 
     public HomePage(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
-    }
-
-    private InputData inputData;
-
-    public HomePage(InputData inputData) {
-        this.inputData = inputData;
     }
 
     public void fillInData(InputData inputData) {                                           //  в fillInData() в скобках есть возможность указать входные параметры через запятую.
@@ -34,6 +28,23 @@ public class HomePage {
         baseFunc.type(TEXT_AREA_FIELD, inputData.getCOMMENTS_INPUT_FROM_INPUT_DATA());
     }
 
+    public void uploadFile(String path) {
+        baseFunc.uploadFile(FILENAME_FIELD, path);
+    }
+
+//    Если надо работать только с ОДНИМ Checkbox-ом
+//    public void clickOnCheckbox(int index) {
+//        baseFunc.getFromTheList(CHECKBOX_ITEMS_FIELD, index);
+//    }
+
+    public void clickOnCheckbox(int[] indexes) {                        //    Если надо работать с ОДНИМ или НЕСКОЛЬКИМИ Checkbox-ами
+        baseFunc.selectFromTheCheckboxList(CHECKBOX_ITEMS_FIELD, indexes);
+    }
+
+    public void clickOnRadio(int index) {
+        baseFunc.selectFromTheRadioList(RADIO_ITEMS_FIELD,index);
+    }
+
     public void selectValueForDropdown(String dropdownValue) {
         baseFunc.selectByValue(DROPDOWN_FIELD, dropdownValue);
     }
@@ -41,4 +52,5 @@ public class HomePage {
     public void clickSubmitBtn() {
         baseFunc.click(SUBMIT_BTN);
     }
+
 }

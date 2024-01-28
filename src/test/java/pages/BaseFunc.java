@@ -1,5 +1,6 @@
 package pages;
 
+import model.InputData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class BaseFunc {
     // Конструктор выполняется принудительно в момент создания экземпляра объекта.
@@ -31,8 +33,8 @@ public class BaseFunc {
                                                         // возвращаемый тип (void) и входящие параметры (String firstParam, int secondParam, boolean thirdParam)
 
 //        //if TRUE
-//        if (url.startsWith("http://") || url.startsWith("https://")) {      // logical operators: AND (&&) and OR (||)
-//            // тут пусто - а так не принято! Ниже будет правильный if
+//        if (url.startsWith("http://") || url.startsWith("https://")) {        // logical operators: AND (&&) and OR (||)
+//                                                                              // тут пусто - а так не принято! Ниже будет правильный if
 //        } else {
 //        //if FALSE
 //            url = "http://" + url;
@@ -75,7 +77,49 @@ public class BaseFunc {
         select.selectByVisibleText(text);
     }
 
+    public String getText(By locator) {
+        WebElement submittedValue = findMyElement(locator);
+        String submittedText = submittedValue.getText();
+        return submittedText;
+    }
+
     public void click(By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+    }
+
+    //    Если надо работать только с ОДНИМ Checkbox-ом
+//    public void getFromTheList(By locator, int index) {
+//        List<WebElement> list = browser.findElements(locator);                        // создали лист WebElement-ов и назвали его list
+//        for (WebElement oneElement : list) {                                          // для каждого WebElement-а (которое обозвали oneElement) из списка list выполняем то,что в {} скобках
+//            if (oneElement.isSelected()) {                                            // ЕСЛИ (if) oneElement выбран (isSelected), ТО (далее в {} скобках) !!Это надо сделать,чтоб снять галочку, если она уже стоит. Метод clear не работает
+//                oneElement.click();                                                   // ТО oneElement надо нажать (метод click)
+//            }
+//        }
+//        list.get(index).click();                                                      // берем из list-а элемент по индексу и кликаем
+//    }
+
+    //    Если надо работать с ОДНИМ или НЕСКОЛЬКИМИ Checkbox-ами
+    public void selectFromTheCheckboxList(By locator, int[] indexes) {                             // By locator -> (это общий локатор для всех элементов из листа), int[] -> создали массив, чтоб можно было передать один ИЛИ несколько индексов, indexes -> дали имя массиву данных
+        List<WebElement> list = browser.findElements(locator);
+        for (WebElement oneCheckboxElement : list) {
+            if (oneCheckboxElement.isSelected()) {
+                oneCheckboxElement.click();
+            }
+        }
+        for (int index : indexes) {
+            list.get(index).click();
+        }
+    }
+
+    public void selectFromTheRadioList(By locator, int index) {
+        List<WebElement> list = browser.findElements(locator);
+        for (WebElement oneRadioElement : list) {
+        }
+        list.get(index).click();
+    }
+
+    public void uploadFile(By locator, String path) {
+        WebElement uploadSomeFile = findMyElement(locator);
+        uploadSomeFile.sendKeys(path);
     }
 }
